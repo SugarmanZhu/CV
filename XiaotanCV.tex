@@ -52,23 +52,13 @@
   }
 }
 
-\newcommand{\resumeSubheading}[5]{
-  \vspace{-1pt}\item
-    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
-      \textbf{#1} & #2 \\
-      \textit{\small#3} & \textit{\small #4} \\
-    \end{tabular*}
-    \textlf{Related courses: #5}
-}
-
-\newcommand{\experienceSubheading}[4]{
+\newcommand{\resumeSubheading}[4]{
   \vspace{-1pt}\item
     \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
       \textbf{#1} & #2 \\
       \textit{\small#3} & \textit{\small #4} \\
     \end{tabular*}
 }
-
 
 \newcommand{\resumeSubItem}[2]{\resumeItem{#1}{#2}\vspace{-4pt}}
 
@@ -94,18 +84,24 @@
 %-----------EDUCATION-----------------
 \section{Education}
   \resumeSubHeadingListStart
+    {
     \resumeSubheading
       {Dulwich International High School Suzhou}{Suzhou, China}
       {A Level;  A*A*A*A*}{Sep. 2014 - Jul. 2018}
-      {Further Mathematics, Mathematics, Physics, Computer Science, Chemistry, Economics}
+    {Related courses: Further Mathematics, Mathematics, Physics, Computer Science, Chemistry, Economics}
+    }
+    {
     \resumeSubheading
       {The University of Manchester}{Manchester, UK}
       {Bachelor of Computer Science;  First Class}{Sep. 2018 - Jul. 2021}
-      {Algorithms and Complexity, Documents and Data on the Web, Cryptography and System Security, AI and Games, The Internet of Things: Architectures and Applications, Cognitive Robotics, Computer Vision}
+    {Related courses: Algorithms and Complexity, Documents and Data on the Web, Cryptography and System Security, AI and Games, The Internet of Things: Architectures and Applications, Cognitive Robotics, Computer Vision}
+    }
+    {
     \resumeSubheading
       {Imperial College London}{London, UK}
       {Masters in Advanced Computing;  Merit}{Oct. 2021 - Oct. 2022}
-      {Mathematics for Machine Learning, Reinforcement Learning, Introduction to Machine Learning, Computational Finance, Computer Vision, Network and Web Security, Cryptography Engineering, Deep Learning, Principles of Distributed Ledgers, Robot Learning and Control}
+    {Related courses: Mathematics for Machine Learning, Reinforcement Learning, Introduction to Machine Learning, Computational Finance, Computer Vision, Network and Web Security, Cryptography Engineering, Deep Learning, Principles of Distributed Ledgers, Robot Learning and Control}
+    }
   \resumeSubHeadingListEnd
 
 %
@@ -123,7 +119,7 @@
 %-----------EXPERIENCE-----------------
 \section{Experience}
   \resumeSubHeadingListStart
-    \experienceSubheading
+    \resumeSubheading
     {Meezao.com}{Beijing, China}
     {Software Engineer Internship}{Jul. 2019 - Sep. 2019}
     \resumeItemListStart
