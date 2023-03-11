@@ -36,15 +36,7 @@ jobs:
 
       - name: Convert PDF to JPG
         run: convert -density 800 XiaotanCV.pdf -quality 90 XiaotanCV.jpg
-
-      - name: GIT commit and push jpg
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "action[bot]@github.com"
-          git add XiaotanCV.jpg
-          git commit -m "Updated XiaotanCV.jpg"
-          git push
-
+      
       - name: Upload to S3
         uses: hkusu/s3-upload-action@master
         with:
@@ -55,3 +47,11 @@ jobs:
           file-path: './XiaotanCV.pdf'
           destination-dir: '/'
           bucket-root: '/'
+          
+      - name: GIT commit and push jpg
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "action[bot]@github.com"
+          git add XiaotanCV.jpg
+          git commit -m "Updated XiaotanCV.jpg"
+          git push
