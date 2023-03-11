@@ -1,0 +1,57 @@
+name: Update CV
+
+on: [push]
+
+jobs:
+  build_upload:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up Git repository
+        uses: actions/checkout@master
+
+      - name: pdflatex main
+        uses: dante-ev/latex-action@latest
+        with:
+          root_file: XiaotanCV.tex
+          compiler: pdflatex
+          args: -interaction=nonstopmode -shell-escape
+
+      - name: GIT commit and push pdf
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "action[bot]@github.com"
+          git add XiaotanCV.pdf
+          git commit -m "Updated XiaotanCV.pdf"
+          git push
+
+      - name: Install ghostscript
+        run: sudo apt install ghostscript
+
+      - name: Change ImageMagick security policy
+        run: |
+          DQT='"' 
+          SRC="rights=${DQT}none${DQT} pattern=${DQT}PDF${DQT}"
+          RPL="rights=${DQT}read\|write${DQT} pattern=${DQT}PDF${DQT}"
+          sudo sed -i "s/$SRC/$RPL/" /etc/ImageMagick-6/policy.xml
+
+      - name: Convert PDF to JPG
+        run: convert -density 800 XiaotanCV.pdf -quality 90 XiaotanCV.jpg
+
+      - name: GIT commit and push jpg
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "action[bot]@github.com"
+          git add XiaotanCV.jpg
+          git commit -m "Updated XiaotanCV.jpg"
+          git push
+
+      - name: Upload to S3
+        uses: hkusu/s3-upload-action@master
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: 'eu-west-2'
+          aws-bucket: ${{ secrets.AWS_BUCKET }}
+          file-path: './XiaotanCV.pdf'
+          destination-dir: '/'
+          bucket-root: '/'
