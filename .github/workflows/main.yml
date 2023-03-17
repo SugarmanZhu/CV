@@ -21,7 +21,7 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "action[bot]@github.com"
           git add XiaotanCV.pdf
-          git commit -m "Updated XiaotanCV.pdf"
+          git commit -m "[bot] Updated XiaotanCV.pdf"
           git push
 
       - name: Install ghostscript
@@ -53,5 +53,5 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "action[bot]@github.com"
           git add XiaotanCV.jpg
-          git commit -m "Updated XiaotanCV.jpg"
+          git commit -m "[bot] Updated XiaotanCV.jpg"
           git push
